@@ -23,7 +23,7 @@ public class OrderRequest
 				.filter(m->m.getDocument()!=null)
 				.filter(m->m.getPriority()>0)
 				.sorted(Comparator.comparingLong(OrderRequest::getPriority))
-				.collect(Collectors.groupingBy(o -> o.getDocument().getDocumentMetaData().getFileName(),LinkedHashMap::new,
+				.collect(Collectors.groupingBy(o -> o.getDocument().getMetaData().getFileName(),LinkedHashMap::new,
 						Collectors.toList()));
 		List<OrderRequest> resultList = new ArrayList<>();
 		resultMap.forEach((s, printDocuments) -> resultList.addAll(printDocuments));
@@ -31,7 +31,7 @@ public class OrderRequest
 	}
 
 	public void print(){
-		System.out.print("{"+this.document.getDocumentMetaData().getFileName()+","+ this.priority+"}");
+		System.out.print("{"+this.document.getMetaData().getFileName()+","+ this.priority+"}");
 	}
 
 	public Document getDocument()

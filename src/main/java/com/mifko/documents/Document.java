@@ -3,26 +3,15 @@ package com.mifko.documents;
 
 import javax.persistence.*;
 
+
 @Entity
+@Table(name = "document")
 public class Document
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-
-    @ManyToOne
-    @JoinColumn(name = "meta_data_id")
+    @Embedded
     private DocumentMetaData metaData;
     private byte[] data;
-
-    public DocumentMetaData getMetaData() {return metaData;}
-
-    public void setMetaData(DocumentMetaData metaData) {this.metaData = metaData;}
-
-    public Long getId() {return id;}
-
-    public void setId(Long id) {this.id = id;}
 
     public Document(String fileName)
     {
@@ -31,6 +20,31 @@ public class Document
 
     public Document()
     {
+    }
+
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+    public DocumentMetaData getMetaData() {return metaData;}
+
+    public void setMetaData(DocumentMetaData metaData)
+    {
+        this.metaData = metaData;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
     public byte[] getData()
@@ -42,10 +56,4 @@ public class Document
     {
         this.data = data;
     }
-
-    public DocumentMetaData getDocumentMetaData()
-    {
-        return metaData;
-    }
-
 }

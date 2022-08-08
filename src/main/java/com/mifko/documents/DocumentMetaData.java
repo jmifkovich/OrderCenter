@@ -2,27 +2,23 @@ package com.mifko.documents;
 
 import org.apache.commons.lang3.StringUtils;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /*
 Contains MetaData Information for FileSystem Objects
 */
-@Entity
+
+@Embeddable
 public class DocumentMetaData
 {
-	@Id
-	@Column(name = "id", nullable = false)
+
 	private Long id;
 
 	private long bytes;
+
 	private String fileName;
 	private FileType fileType;
 
-	public Long getId() {return id;}
-
-	public void setId(Long id) {this.id = id;}
 
 	public DocumentMetaData(String fileName){
 		this.fileName = fileName;
@@ -43,22 +39,38 @@ public class DocumentMetaData
 
 	}
 
-	public String getFileName()
+	public void setId(Long id)
 	{
-		return fileName;
+		this.id = id;
 	}
 
-	public FileType getFileType(){
-		return fileType;
-	}
-
-	public long getBytes(){
+	public long getBytes()
+	{
 		return bytes;
 	}
 
 	public void setBytes(long bytes)
 	{
-		this.bytes= bytes;
+		this.bytes = bytes;
 	}
 
+	public String getFileName()
+	{
+		return fileName;
+	}
+
+	public void setFileName(String fileName)
+	{
+		this.fileName = fileName;
+	}
+
+	public FileType getFileType()
+	{
+		return fileType;
+	}
+
+	public void setFileType(FileType fileType)
+	{
+		this.fileType = fileType;
+	}
 }

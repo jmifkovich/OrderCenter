@@ -56,8 +56,8 @@ class OrderRequestTest
 
         assertEquals(correctResultList.size(), resultList.size());
         for (int i = 0; i < correctResultList.size(); i++) {
-            assertEquals(correctResultList.get(i).getDocument().getDocumentMetaData().getFileName(),
-                    resultList.get(i).getDocument().getDocumentMetaData().getFileName());
+            assertEquals(correctResultList.get(i).getDocument().getMetaData().getFileName(),
+                    resultList.get(i).getDocument().getMetaData().getFileName());
             assertEquals(correctResultList.get(i).getPriority(), resultList.get(i).getPriority());
         }
     }
