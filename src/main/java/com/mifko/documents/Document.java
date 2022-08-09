@@ -1,17 +1,22 @@
 package com.mifko.documents;
 
 
+import com.sun.istack.NotNull;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
+import java.nio.file.Path;
 
 
 @Entity
-@Table(name = "document")
+@Table(name = "DOCUMENT")
 public class Document
 {
     private Long id;
     @Embedded
+    @Nullable
     private DocumentMetaData metaData;
-    private byte[] data;
+    private String filePath;
 
     public Document(String fileName)
     {
@@ -37,9 +42,10 @@ public class Document
 
     public DocumentMetaData getMetaData() {return metaData;}
 
+    @Nullable
     public void setMetaData(DocumentMetaData metaData)
     {
-        this.metaData = metaData;
+        this.metaData = new DocumentMetaData(this.filePath);
     }
 
     public void setId(Long id)
@@ -47,13 +53,13 @@ public class Document
         this.id = id;
     }
 
-    public byte[] getData()
+    public String getFilePath()
     {
-        return data;
+        return filePath;
     }
 
-    public void setData(byte[] data)
+    public void setFilePath(String path)
     {
-        this.data = data;
+        this.filePath = path;
     }
 }

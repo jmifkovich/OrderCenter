@@ -12,14 +12,14 @@ import org.springframework.context.annotation.Configuration;
 public class LoadDatabase
 {
 
-    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+
 
     @Bean
     CommandLineRunner initDatabase(DocumentRepository repository){
 
         return args ->{
 
-            log.info("Preloading " +new Document("docA.docx"));
+            OrderCenterApplication.log.info("Preloading " +repository.save(new Document("docA.docx")));
 
         };
     }
