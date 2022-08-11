@@ -1,26 +1,21 @@
-package com.mifko.documents;
+package com.mifko.model;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
-/*
-Contains MetaData Information for FileSystem Objects
-*/
 
 @Embeddable
-public class DocumentMetaData
+public class MessageMetaData
 {
 
 	private long bytes;
-	private String fileName;
+	private String messageType;
 	private FileType fileType;
 
-	public DocumentMetaData(String fileName)
+	public MessageMetaData(String fileName)
 	{
-		this.fileName = fileName;
+		this.messageType = fileName;
 		if (fileName != null && StringUtils.contains(fileName, ".")) {
 			String extension = StringUtils.substring(fileName, StringUtils.lastIndexOf(fileName, ".")).replace(".", "").toLowerCase();
 			this.fileType = FileType.getFileType(extension);
@@ -30,7 +25,7 @@ public class DocumentMetaData
 
 	}
 
-	public DocumentMetaData()
+	public MessageMetaData()
 	{
 
 	}
@@ -46,14 +41,14 @@ public class DocumentMetaData
 		this.bytes = bytes;
 	}
 
-	public String getFileName()
+	public String getMessageType()
 	{
-		return fileName;
+		return messageType;
 	}
 
-	public void setFileName(String fileName)
+	public void setMessageType(String fileName)
 	{
-		this.fileName = fileName;
+		this.messageType = fileName;
 	}
 
 	public FileType getFileType()

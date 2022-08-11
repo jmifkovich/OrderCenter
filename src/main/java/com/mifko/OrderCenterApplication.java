@@ -18,7 +18,7 @@ public class OrderCenterApplication
     {
         SpringApplication.run(OrderCenterApplication.class, args);
 
-        log.info("Starting OrderCenter");
+        log.info("Starting Messages");
 
 
 /*        List<PrintDocument> list1 = new ArrayList<>();
@@ -43,7 +43,7 @@ public class OrderCenterApplication
     @RequestMapping("/")
     public String home()
     {
-        return "PrintCenter Up";
+        return "Messages Up";
     }
 
 

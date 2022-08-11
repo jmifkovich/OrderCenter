@@ -1,9 +1,7 @@
 package com.mifko;
 
-import com.mifko.documents.Document;
-import com.mifko.documents.DocumentRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.mifko.model.Message;
+import com.mifko.controller.MessageRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +13,11 @@ public class LoadDatabase
 
 
     @Bean
-    CommandLineRunner initDatabase(DocumentRepository repository){
+    CommandLineRunner initDatabase(MessageRepository repository){
 
         return args ->{
 
-            OrderCenterApplication.log.info("Preloading " +repository.save(new Document("docA.docx")));
+            OrderCenterApplication.log.info("Preloading " +repository.save(new Message("Hello World")));
 
         };
     }

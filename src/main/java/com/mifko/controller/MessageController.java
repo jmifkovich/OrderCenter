@@ -1,5 +1,6 @@
-package com.mifko.documents;
+package com.mifko.controller;
 
+import com.mifko.model.Message;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,22 +9,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class DocumentController
+public class MessageController
 {
-    private final DocumentRepository repository;
+    private final MessageRepository repository;
 
-    DocumentController(DocumentRepository repo)
+    MessageController(MessageRepository repo)
     {
         this.repository=repo;
     }
 
-    @GetMapping("/documents")
-    List<Document> all(){
+    @GetMapping("/messages")
+    List<Message> all(){
         return repository.findAll();
     }
 
-    @PostMapping("/documents")
-    Document newDocument(@RequestBody Document newDocument){
+    @PostMapping("/messages")
+    Message newDocument(@RequestBody Message newDocument){
         return repository.save(newDocument);
     }
 

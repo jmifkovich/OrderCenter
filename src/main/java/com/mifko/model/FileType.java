@@ -1,4 +1,4 @@
-package com.mifko.documents;
+package com.mifko.model;
 
 public enum FileType{
     PDF("pdf", true),
