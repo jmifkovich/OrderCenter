@@ -1,6 +1,9 @@
 package com.mifko.model;
 
 
+import net.bytebuddy.implementation.bind.annotation.Default;
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -8,48 +11,57 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "MESSAGE")
-public class Message
+@DynamicInsert
+public class Message<T, I extends Number>
 {
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Embedded
-    @Nullable
-    private MessageMetaData metaData;
+
+
     private String message;
+
+    @Column(name = "PRIORITY", columnDefinition = "int default 10")
     private Integer priority;
 
-    public Message(String fileName)
-    {
-        this.metaData = new MessageMetaData(fileName);
-    }
-    public Message(String fileName, Integer priority)
-    {
-        this.metaData = new MessageMetaData(fileName);
-        this.priority = priority;
-    }
 
     public Message()
     {
     }
 
+    public Message(String input)
+    {
+        this.message=  input;
+    }
 
-    @Id
-    @GeneratedValue
-    @Column(name = "id")
+    public Message(String input,Integer priority)
+    {
+        this.message=  input;
+        this.priority=priority;
+    }
+
+
     public Long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
 
-    public MessageMetaData getMetaData() {return metaData;}
 
-    @Nullable
-    public void setMetaData(MessageMetaData metaData)
+    public String getMessage()
     {
-        this.metaData = new MessageMetaData(this.message);
+        return message;
+    }
+
+    public void setMessage(String message)
+    {
+        this.message = message;
+    }
+
+    public void setMessage(T message, Integer priority)
+    {
+        this.priority = priority;
     }
 
     public void setId(Long id)
@@ -57,15 +69,7 @@ public class Message
         this.id = id;
     }
 
-    public String getMessage()
-    {
-        return message;
-    }
 
-    public void setMessage(String path)
-    {
-        this.message = path;
-    }
 
     public Integer getPriority()
     {
@@ -76,4 +80,5 @@ public class Message
     {
         this.priority = priority;
     }
+
 }

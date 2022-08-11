@@ -2,12 +2,10 @@ package com.mifko;
 
 
 import com.mifko.model.Message;
-import com.mifko.services.MessageService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 
 import java.util.ArrayList;
@@ -15,10 +13,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 class OrderRequestTest
 {
 
-   private List<Message> list1;
+/*   private List<Message> list1;
    private List<Message> list2;
 
    final private List<Message> bigList1 = generateBigPrintDocumentList(500000);
@@ -30,7 +29,7 @@ class OrderRequestTest
         this.list1 = new ArrayList<>();
         this.list2 = new ArrayList<>();
 
-    }
+    }*/
 
 
 /*    @Test
@@ -63,24 +62,24 @@ class OrderRequestTest
         }*//*
     }*/
 
-    @Test
+/*    @Test
     void mergeCount()
     {
         List<Message> resultList = MessageService.merge(this.list1,this.list2);
         assertEquals(this.list1.size()+this.list2.size(),resultList.size(),"List size matches");
-    }
+    }*/
 
 
-    @Test
+/*    @Test
     void mergeStretchGoal()
     {
         long startTime = System.nanoTime();
         List<Message> resultList = MessageService.merge(bigList1,bigList2);
         long stopTime = System.nanoTime();
         System.out.println("Merged " + resultList.size() +" Documents in " + (stopTime-startTime)/1000000000f +" seconds");
-    }
+    }*/
 
-    private List<Message> generateBigPrintDocumentList(long size)
+/*    private List<Message> generateBigPrintDocumentList(long size)
     {
         List<Message> returnList = new ArrayList<>();
 
@@ -88,9 +87,9 @@ class OrderRequestTest
         {
             String randomFileName = RandomStringUtils.randomAlphabetic(1,10);
             Integer randomPriority = RandomUtils.nextInt(1,10);
-            returnList.add(new Message(randomFileName,randomPriority));
+            returnList.add(new Message<String,Integer>(randomFileName,randomPriority));
 
         }
         return returnList;
-    }
+    }*/
 }

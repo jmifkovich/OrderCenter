@@ -1,7 +1,7 @@
 package com.mifko.services;
 
+
 import com.mifko.model.Message;
-import org.hibernate.cfg.NotYetImplementedException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,12 +10,14 @@ import java.util.*;
 public class MessageServiceImpl implements MessageService
 {
 
-    //do something
 
     @Override
-    public List<Message> getMessages()
-    {
-        throw new NotYetImplementedException("Nothing here");
+    public List<Message> getMessages(){
+
+         List<Message>  returnMe = new ArrayList<>();
+         return returnMe;
+
+        //throw new NotYetImplementedException("Nothing here");
     }
 
 

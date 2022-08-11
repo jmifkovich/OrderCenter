@@ -3,8 +3,7 @@ drop table if exists MESSAGE;
 create table MESSAGE(
     id BIGINT auto_increment primary key,
     MESSAGE VARCHAR2 NULL_TO_DEFAULT,
-    PRIORITY INT DEFAULT 10,
-    BYTES BIGINT NULL_TO_DEFAULT,
+    PRIORITY INT NULL_TO_DEFAULT DEFAULT 10
 );
 
 /*

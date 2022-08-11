@@ -1,6 +1,6 @@
 #FileLock
-#Wed Aug 10 22:33:37 EDT 2022
-server=localhost\:64830
-hostName=localhost
+#Thu Aug 11 19:30:08 UTC 2022
+hostName=192.168.1.13
+id=1828e62b13787beeeba98548fa8bff185568275f7f0
 method=file
-id=1828ac0081410de40030afe4a4b0ead9a721382dc25
+server=192.168.1.13\:54702
